@@ -13,16 +13,21 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
+// Auth::routes();
 Route::get('/', function () {
     return view('welcome');
 });
 
-Auth::routes();
-
 Route::get('/home', 'HomeController@index')->name('home');
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/prueba',function(){
+	// echo 'hola';
+	return view('home_alt');
+});
+
+// Route::get('/home', 'HomeController@index')->name('home');
 
 Route::group(['middleware' => 'auth'], function () {
 	Route::resource('user', 'UserController', ['except' => ['show']]);
